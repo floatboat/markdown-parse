@@ -8,13 +8,9 @@ import java.nio.file.Paths;
 public class MarkdownParse {
     public static ArrayList<String> getLinks(String[] markdown) {
         ArrayList<String> toReturn = new ArrayList<>();
-        // find the next [, then find the ], then find the (, then take up to
-        // the next )
         int currentIndex = 0;
         for (String line: markdown) {
             currentIndex = 0;
-            //System.out.println("currentIndex value: " + toReturn);
-            //System.out.println("lines: " + line);
             if (line.indexOf("[") == -1) {
                 continue;
             }
@@ -26,23 +22,9 @@ public class MarkdownParse {
             toReturn.add(line.substring(openParen + 1, closeParen));
             currentIndex = closeParen + 1;
         }
-        // while(currentIndex < markdown.length()) {
-            
-        //     int nextOpenBracket = markdown.indexOf("[", currentIndex);
-        //     int nextCloseBracket = markdown.indexOf("]", nextOpenBracket);
-            
-        //     int openParen = markdown.indexOf("(", nextCloseBracket);
-        //     int closeParen = markdown.indexOf(")", markdown.length()-1);
-        //     toReturn.add(markdown.substring(openParen + 1, closeParen));
-        //     currentIndex = closeParen + 1;
-
-        //     //System.out.println("currentIndex value: " + currentIndex);
-        // }
         return toReturn;
     }
     public static void main(String[] args) throws IOException {
-		// Path fileName = Path.of(args[0]);
-	    // String contents = Files.readString(fileName);
         String regFile = Files.readString(Path.of(args[0]));
         String[] regLines = regFile.split("\n");
         ArrayList<String> links = getLinks(regLines);

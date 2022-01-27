@@ -17,12 +17,12 @@ public class MarkdownParseTest {
         assertEquals(10, 5*2);
     }
     
-    // @Test
-    // public void testLink() {
-    //     String[] links = {"https://something.com","some-page.html"};
-    //     List<String> Array4 = Arrays.asList("http:…");
-    //     assertSame(links, MarkdownParse.getLinks(Files.readString(Path.of("test-file.md"))));
-    // }
+    @Test
+    public void testLink() {
+        String[] links = {"https://something.com","some-page.html"};
+        List<String> Array4 = Arrays.asList("http:…");
+        assertSame(links, MarkdownParse.getLinks(Files.readString(Path.of("test-file.md"))));
+    }
 
     }
 
